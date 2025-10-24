@@ -19,6 +19,8 @@ public class Frame {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JComboBox comboBox_1;
+	private JComboBox comboBox_2;
 
 	/**
 	 * Launch the application.
@@ -47,17 +49,42 @@ public class Frame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		initializeFrame();
+		initializeComboBoxes();
+		setupComboBox1Listener();
+		setupComboBox2Listener();
+		createLayout();
+	}
+	
+	/**
+	 * Initialize frame properties.
+	 */
+	private void initializeFrame() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+	}
+	
+	/**
+	 * Initialize combo boxes with their models and bounds.
+	 */
+	private void initializeComboBoxes() {
+		comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Anuradhapura", "Polonnaruva", "Dhabadeniya", "Yapahuva"}));
+		comboBox_1.setBounds(270, 21, 142, 22);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_2 = new JComboBox();
+		comboBox_2.setBounds(270, 53, 142, 22);
+	}
+	
+	/**
+	 * Setup event listener for comboBox_1.
+	 */
+	private void setupComboBox1Listener() {
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(comboBox_1.getSelectedItem().equals("Anuradhapura")) {
+				if("Anuradhapura".equals(comboBox_1.getSelectedItem())) {
 					
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("Dhuthugamunu");
@@ -66,7 +93,7 @@ public class Frame {
 					comboBox_2.addItem("Dhantha");
 					comboBox_2.setSelectedItem(null);
 					
-				}else if(comboBox_1.getSelectedItem().equals("Polonnaruva")) {
+				}else if("Polonnaruva".equals(comboBox_1.getSelectedItem())) {
 					
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("pandukabaya");
@@ -75,7 +102,7 @@ public class Frame {
 					comboBox_2.addItem("wallaba");
 					comboBox_2.setSelectedItem(null);
 					
-				}else if(comboBox_1.getSelectedItem().equals("Dhabadeniya")) {
+				}else if("Dhabadeniya".equals(comboBox_1.getSelectedItem())) {
 					
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("1");
@@ -84,7 +111,7 @@ public class Frame {
 					comboBox_2.addItem("4");
 					comboBox_2.setSelectedItem(null);
 					
-				}else if(comboBox_1.getSelectedItem().equals("Yapahuva")) {
+				}else if("Yapahuva".equals(comboBox_1.getSelectedItem())) {
 					
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("A");
@@ -96,16 +123,23 @@ public class Frame {
 				}
 			}
 		});
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Anuradhapura", "Polonnaruva", "Dhabadeniya", "Yapahuva"}));
-		comboBox_1.setBounds(270, 21, 142, 22);
-		frame.getContentPane().add(comboBox_1);
-		
-		
+	}
+	
+	/**
+	 * Setup event listener for comboBox_2.
+	 */
+	private void setupComboBox2Listener() {
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		comboBox_2.setBounds(270, 53, 142, 22);
+	}
+	
+	/**
+	 * Create and add all components to the frame layout.
+	 */
+	private void createLayout() {
+		frame.getContentPane().add(comboBox_1);
 		frame.getContentPane().add(comboBox_2);
 		
 		JLabel lbl1 = new JLabel("Kindom");
@@ -125,9 +159,9 @@ public class Frame {
 		btnSubmit.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(comboBox_2.getSelectedItem().equals("Dhuthugamunu")) {
+				if("Dhuthugamunu".equals(comboBox_2.getSelectedItem())) {
 					textField.setText("Cr¬2O42-");										
-				}else if(comboBox_2.getSelectedItem().equals("parahuu")) {
+				}else if("parahuu".equals(comboBox_2.getSelectedItem())) {
 					textField.setText("dgfsh");										
 				}
 	
